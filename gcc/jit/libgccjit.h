@@ -2071,6 +2071,9 @@ gcc_jit_vector_type_get_element_type (gcc_jit_vector_type *vector_type);
 extern gcc_jit_type *
 gcc_jit_type_unqualified (gcc_jit_type *type);
 
+extern bool
+gcc_jit_cpu_supports (const char *feature);
+
 /* Given type "T", get type "T __attribute__ ((packed))".  */
 extern void
 gcc_jit_type_set_packed (gcc_jit_type *type);

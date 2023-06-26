@@ -29,6 +29,7 @@ along with GCC; see the file COPYING3.  If not see
 #include "libgccjit.h"
 #include "jit-recording.h"
 #include "jit-result.h"
+#include "jit-target.h"
 
 /* The opaque types used by the public API are actually subclasses
    of the gcc::jit::recording classes.  */
@@ -686,6 +687,12 @@ gcc_jit_type_unqualified (gcc_jit_type *type)
   RETURN_NULL_IF_FAIL (type, NULL, NULL, "NULL type");
 
   return (gcc_jit_type *)type->unqualified ();
+}
+
+extern bool
+gcc_jit_cpu_supports (const char *feature)
+{
+  return jit_has_target_value ("target_feature", feature);
 }
 
 /* Public entrypoint.  See description in libgccjit.h.
